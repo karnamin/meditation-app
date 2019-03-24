@@ -9,9 +9,15 @@ const app = () => {
 
     // Time Display
     const timeDisplay = document.querySelector(".time-display");
-    const timeSelect = document.querySelectorAll(".time-select button");
+    const timeSelect = document.querySelectorAll(
+        ".time-select button:not(:last-child)"
+    );
     // Get the length of the outline
     const outlineLength = outline.getTotalLength();
+
+    //Get the time inputted
+    const inputTime = document.querySelector("#user-input-time");
+    const inputButton = document.querySelector("#user-input-button");
 
     // Duration
     let fakeDuration = 600;
@@ -41,6 +47,15 @@ const app = () => {
                 fakeDuration / 60
             )}:${Math.floor(fakeDuration % 60)}`;
         });
+    });
+
+    // User input minutes
+    inputButton.addEventListener("click", function() {
+        console.log(inputTime.value);
+        fakeDuration = inputTime.value * 60;
+        timeDisplay.textContent = `${Math.floor(
+            fakeDuration / 60
+        )}:${Math.floor(fakeDuration % 60)}`;
     });
 
     // function to stop and play the sounds
