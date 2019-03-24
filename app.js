@@ -51,7 +51,11 @@ const app = () => {
 
     // User input minutes
     inputButton.addEventListener("click", function() {
-        console.log(inputTime.value);
+        let userInputTime = Number(inputTime.value);
+        if (isNaN(userInputTime)) {
+            alert("Please input a number");
+            return;
+        }
         fakeDuration = inputTime.value * 60;
         timeDisplay.textContent = `${Math.floor(
             fakeDuration / 60
